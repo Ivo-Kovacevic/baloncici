@@ -5,5 +5,9 @@ export const Route = createFileRoute("/kontakt")({
 });
 
 function Kontakt() {
-  return <div>Hello /kontakt!</div>;
+  return (
+    <>
+      <main className="container mx-auto">Hello /kontakt!</main>;
+    </>
+  );
 }

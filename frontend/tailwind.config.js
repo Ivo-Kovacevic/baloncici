@@ -5,7 +5,10 @@ export default {
     extend: {
       backgroundImage: {
         'bgImage': "url('/src/assets/images/bgImage.webp')",
-      }
+      },
+      maxWidth: {
+        container: "800px",
+      },
     },
   },
   plugins: [],

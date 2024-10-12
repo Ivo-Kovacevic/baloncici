@@ -30,7 +30,7 @@ export default function HeaderFooter({ children }: Main) {
 
         <footer className="py-8">
           <div className="flex items-center container mx-auto">
-            <div className="mr-auto p-4">Balončići {new Date().getFullYear()}</div>
+            <div className="mr-auto p-4">Balončići © {new Date().getFullYear()}</div>
             <a
               className="m-4 p-1"
               href="https://www.facebook.com/profile.php?id=61561337233731"
