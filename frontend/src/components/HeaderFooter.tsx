@@ -9,7 +9,7 @@ export default function HeaderFooter({ children }: Main) {
   return (
     <>
       <div className="bg-bgImage">
-        <header className="shadow-md shadow-gray-500">
+        <header className="shadow-md shadow-gray-400">
           <nav className="flex items-center container mx-auto">
             <Link to="/" className="mr-auto text-4xl p-4">
               Balončići
