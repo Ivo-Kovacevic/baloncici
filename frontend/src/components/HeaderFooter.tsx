@@ -11,7 +11,7 @@ export default function HeaderFooter({ children }: Main) {
       <div className="bg-bgImage">
         <header className="shadow-md shadow-gray-400">
           <nav className="flex items-center container mx-auto">
-            <Link to="/" className="mr-auto text-4xl p-4">
+            <Link to="/" className="mr-auto text-4xl m-4">
               Balončići
             </Link>
             <Link to="/" className="m-4 p-1">

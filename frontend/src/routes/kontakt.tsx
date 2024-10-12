@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/kontakt")({
   component: Kontakt,
@@ -31,16 +31,19 @@ function Kontakt() {
       setMessage("");
       setEmail("");
       setName("");
-      console.log(mailSent);
     } catch (error: any) {
       console.error(error);
       setError(error.message || "Something went wrong");
     }
   };
 
+  useEffect(() => {
+    console.log(mailSent);
+  }, [mailSent]);
+
   return (
     <>
-      <main className="container mx-auto flex flex-col sm:flex-row justify-around py-16">
+      <main className="container mx-auto flex flex-col md:flex-row justify-around py-16">
         <section className="flex-1 p-4">
           <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
             <h1 className="text-2xl">Kontakt</h1>
@@ -51,8 +54,9 @@ function Kontakt() {
               name="message"
               id="message"
               placeholder="Poruka"
-              className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4"
+              className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4 focus:outline-dark"
               required
+              value={message}
               onChange={(e) => setMessage(e.target.value)}
               spellCheck="false"
             />
@@ -65,6 +69,7 @@ function Kontakt() {
               placeholder="example@gmail.com"
               className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4"
               required
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               spellCheck="false"
             />
@@ -77,6 +82,7 @@ function Kontakt() {
               placeholder="Ime"
               className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4"
               required
+              value={name}
               onChange={(e) => setName(e.target.value)}
               spellCheck="false"
             />
@@ -88,7 +94,15 @@ function Kontakt() {
             </button>
           </form>
         </section>
-        <section className="flex-1 p-4">Kontakt info</section>
+        <div className="mx-2 sm:mx-8 my-10 border-b-2 md:border-l-2 border-dark"></div>
+        <section className="flex-1 p-4 text-center">
+          <h1 className="text-2xl">Kontakt info</h1>
+          <div className="flex flex-col justify-evenly gap-16 py-16 md:gap-0 h-full">
+            <div>Ilica 127, Zagreb, Hrvatska</div>
+            <div>+385 91 123 4567</div>
+            <div>baloncici@gmail.com</div>
+          </div>
+        </section>
       </main>
     </>
   );
