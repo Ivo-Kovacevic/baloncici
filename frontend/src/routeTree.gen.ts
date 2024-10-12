@@ -10,101 +10,101 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as DecorationsImport } from './routes/decorations'
-import { Route as ContactImport } from './routes/contact'
-import { Route as IndexImport } from './routes/index'
+import { Route as rootRoute } from "./routes/__root";
+import { Route as KontaktImport } from "./routes/kontakt";
+import { Route as DekoracijeImport } from "./routes/dekoracije";
+import { Route as IndexImport } from "./routes/index";
 
 // Create/Update Routes
 
-const DecorationsRoute = DecorationsImport.update({
-  path: '/decorations',
+const KontaktRoute = KontaktImport.update({
+  path: "/kontakt",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
-const ContactRoute = ContactImport.update({
-  path: '/contact',
+const DekoracijeRoute = DekoracijeImport.update({
+  path: "/dekoracije",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 const IndexRoute = IndexImport.update({
-  path: '/',
+  path: "/",
   getParentRoute: () => rootRoute,
-} as any)
+} as any);
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactImport
-      parentRoute: typeof rootRoute
-    }
-    '/decorations': {
-      id: '/decorations'
-      path: '/decorations'
-      fullPath: '/decorations'
-      preLoaderRoute: typeof DecorationsImport
-      parentRoute: typeof rootRoute
-    }
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/dekoracije": {
+      id: "/dekoracije";
+      path: "/dekoracije";
+      fullPath: "/dekoracije";
+      preLoaderRoute: typeof DekoracijeImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/kontakt": {
+      id: "/kontakt";
+      path: "/kontakt";
+      fullPath: "/kontakt";
+      preLoaderRoute: typeof KontaktImport;
+      parentRoute: typeof rootRoute;
+    };
   }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/decorations': typeof DecorationsRoute
+  "/": typeof IndexRoute;
+  "/dekoracije": typeof DekoracijeRoute;
+  "/kontakt": typeof KontaktRoute;
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/decorations': typeof DecorationsRoute
+  "/": typeof IndexRoute;
+  "/dekoracije": typeof DekoracijeRoute;
+  "/kontakt": typeof KontaktRoute;
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/decorations': typeof DecorationsRoute
+  __root__: typeof rootRoute;
+  "/": typeof IndexRoute;
+  "/dekoracije": typeof DekoracijeRoute;
+  "/kontakt": typeof KontaktRoute;
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/decorations'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/decorations'
-  id: '__root__' | '/' | '/contact' | '/decorations'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/" | "/dekoracije" | "/kontakt";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/" | "/dekoracije" | "/kontakt";
+  id: "__root__" | "/" | "/dekoracije" | "/kontakt";
+  fileRoutesById: FileRoutesById;
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  ContactRoute: typeof ContactRoute
-  DecorationsRoute: typeof DecorationsRoute
+  IndexRoute: typeof IndexRoute;
+  DekoracijeRoute: typeof DekoracijeRoute;
+  KontaktRoute: typeof KontaktRoute;
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContactRoute: ContactRoute,
-  DecorationsRoute: DecorationsRoute,
-}
+  DekoracijeRoute: DekoracijeRoute,
+  KontaktRoute: KontaktRoute,
+};
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
 /* prettier-ignore-end */
 
@@ -115,18 +115,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/contact",
-        "/decorations"
+        "/dekoracije",
+        "/kontakt"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/contact": {
-      "filePath": "contact.tsx"
+    "/dekoracije": {
+      "filePath": "dekoracije.tsx"
     },
-    "/decorations": {
-      "filePath": "decorations.tsx"
+    "/kontakt": {
+      "filePath": "kontakt.tsx"
     }
   }
 }
