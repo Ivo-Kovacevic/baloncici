@@ -31,7 +31,6 @@ function Kontakt() {
       setEmail("");
       setName("");
     } catch (error: any) {
-      console.error(error);
       setTimeout(() => {
         setMessageStatus("failed");
       }, 1000);
@@ -64,7 +63,7 @@ function Kontakt() {
           </svg>
           <span>Poruka poslana</span>
         </>
-      ) : messageStatus === "failed" ? (
+      ) : messageStatus === "failed" || error ? (
         <>
           <svg
             className="m-2 h-5 w-5 text-red-500"
