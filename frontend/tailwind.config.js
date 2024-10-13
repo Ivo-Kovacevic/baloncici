@@ -6,6 +6,7 @@ export default {
       colors: {
         light: "#DCECD6",
         dark: "#222720",
+        darker: "#171b16",
       },
       backgroundImage: {
         bgImage: "url('/src/assets/images/bgImage.webp')",
