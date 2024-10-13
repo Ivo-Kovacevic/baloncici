@@ -113,7 +113,7 @@ function Kontakt() {
       <main className="container mx-auto flex flex-col md:flex-row justify-around py-16">
         <section className="flex-1 p-4">
           <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
-            <h1 className="text-2xl">Kontakt</h1>
+            <h1 className="text-2xl">Kontaktirajte nas</h1>
 
             <label htmlFor="message">Upit</label>
             <textarea
