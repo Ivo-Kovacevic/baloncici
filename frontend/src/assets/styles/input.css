@@ -2,8 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/Poppins-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    src: url("./fonts/Poppins-Medium.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "Allison";
+    font-style: normal;
+    font-weight: 400;
+    src: url("./fonts/Allison-Regular.ttf") format("truetype");
+  }
+}
+
 @layer components {
   body {
-    @apply text-dark;
+    @apply text-dark font-poppins;
   }
 }

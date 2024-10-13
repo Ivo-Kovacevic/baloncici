@@ -3,6 +3,10 @@ export default {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        allison: ["Allison", "serif"],
+      },
       colors: {
         light: "#DCECD6",
         dark: "#222720",

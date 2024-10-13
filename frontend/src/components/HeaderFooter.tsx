@@ -9,7 +9,7 @@ export default function HeaderFooter({ children }: Main) {
   return (
     <>
       <div className="bg-bgImage">
-        <header className="shadow-md shadow-gray-400">
+        <header className="shadow-md shadow-gray-400 font-bold">
           <nav className="flex items-center container mx-auto">
             <Link to="/" className="mr-auto text-4xl m-4">
               Balončići
@@ -28,7 +28,7 @@ export default function HeaderFooter({ children }: Main) {
 
         {children}
 
-        <footer className="py-8">
+        <footer className="py-16">
           <div className="flex items-center container mx-auto">
             <div className="mr-auto p-4">Balončići © {new Date().getFullYear()}</div>
             <a

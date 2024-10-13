@@ -134,7 +134,7 @@ function Kontakt() {
               name="email"
               id="email"
               placeholder="example@gmail.com"
-              className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4"
+              className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4 focus:outline-dark"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -147,7 +147,7 @@ function Kontakt() {
               name="name"
               id="name"
               placeholder="Ime"
-              className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4"
+              className="p-1 bg-stone-100 border-2 border-gray-400 rounded mb-4 focus:outline-dark"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
