@@ -9,11 +9,11 @@ function Index() {
     <>
       <main className="flex flex-col items-center container mx-auto text-center">
         <section>
-          <h1 className="text-7xl my-72 font-allison">Uzleti s nama u svijet balonske mašte</h1>
+          <h1 className="text-7xl my-72 p-2 font-allison">Uzleti s nama u svijet balonske mašte</h1>
         </section>
         <section className="max-w-container">
           <h2 className="text-3xl p-2">O nama</h2>
-          <p>
+          <p className="p-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -24,7 +24,7 @@ function Index() {
         </section>
         <section className="my-52 max-w-container">
           <h2 className="text-3xl p-2">Kontaktirajte nas</h2>
-          <p className="mb-4">
+          <p className="mb-4 p-2">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </p>

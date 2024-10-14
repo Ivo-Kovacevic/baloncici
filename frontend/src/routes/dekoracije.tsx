@@ -29,15 +29,15 @@ function Dekoracije() {
     <>
       <main className="container mx-auto">
         <h1 className="my-32 text-center text-4xl">Dekoracije</h1>
-        <section className="px-8 md:px-16 grid grid-cols-2 lg:grid-cols-3 gap-8">
+        <section className="px-2 md:px-8 grid grid-cols-2 lg:grid-cols-3 gap-4">
           {images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt=""
-                loading="lazy"
-                className="rounded transition hover:brightness-50 hover:cursor-pointer"
-              />
+            <img
+              key={index}
+              src={image}
+              alt=""
+              loading="lazy"
+              className="rounded transition hover:brightness-50 hover:cursor-pointer"
+            />
           ))}
         </section>
       </main>
