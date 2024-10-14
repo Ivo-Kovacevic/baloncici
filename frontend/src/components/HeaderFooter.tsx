@@ -13,9 +13,7 @@ export default function HeaderFooter({ children }: Main) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.marginRight = "15px";
     } else {
-      document.body.style.marginRight = "0px";
       document.body.style.overflow = "unset";
     }
   }, [isOpen]);
