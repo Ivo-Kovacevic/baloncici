@@ -9,7 +9,16 @@ interface Main {
 
 export default function HeaderFooter({ children }: Main) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  const navItems = [
+    { to: "/", label: "POČETNA" },
+    { to: "/dekoracije", label: "DEKORACIJE" },
+    { to: "/kontakt", label: "KONTAKT" },
+  ];
+
+  // Hide scrollbar when mobile navigation is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -18,32 +27,47 @@ export default function HeaderFooter({ children }: Main) {
     }
   }, [isOpen]);
 
-  const navItems = [
-    { to: "/", label: "POČETNA" },
-    { to: "/dekoracije", label: "DEKORACIJE" },
-    { to: "/kontakt", label: "KONTAKT" },
-  ];
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+    setLastScrollY(currentScrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
     <>
       <div className="bg-bgImage">
-        <header className="shadow-md shadow-gray-400 font-bold">
+        <header
+          className={`z-30 fixed left-0 top-0 right-0 bg-bgImage shadow-md shadow-gray-400 font-bold transition-all ${!isVisible && "-translate-y-full"}`}
+        >
           {/* Desktop navigation */}
           <nav className="flex items-center container mx-auto">
             <Link to="/" className="mr-auto text-4xl m-4">
               Balončići
             </Link>
-            <div className="hidden sm:flex">
+            <div className="group hidden sm:flex">
               {navItems.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
-                  className="m-4 p-1 hover:opacity-80 transition-opacity"
+                  className="m-4 p-1 group-hover:opacity-75 hover:!opacity-100 transition-opacity"
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
+
+            {/* Hamburger menu */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 m-4 sm:hidden focus:outline-none z-50"
@@ -58,27 +82,29 @@ export default function HeaderFooter({ children }: Main) {
 
           {/* Mobile navigation */}
           <nav
-            className={`sm:hidden fixed inset-0 z-20 flex flex-col items-center justify-center bg-bgImage transition-opacity duration-300 ${
+            className={`sm:hidden fixed inset-0 flex flex-col gap-4 items-center justify-center bg-bgImage transition-opacity duration-300 ${
               !isOpen && "pointer-events-none opacity-0"
             }`}
           >
-            {navItems.map((item, index) => (
-              <div
-                key={item.to}
-                className={`transform transition-all duration-300 ${
-                  isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <Link
-                  to={item.to}
-                  className="block py-4 text-3xl font-bold hover:opacity-80 transition-opacity"
-                  onClick={() => setIsOpen(false)}
+            <div className="group text-center">
+              {navItems.map((item, index) => (
+                <div
+                  key={item.to}
+                  className={`my-8 transform transition-all duration-300 ${
+                    isOpen ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+                  }`}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  {item.label}
-                </Link>
-              </div>
-            ))}
+                  <Link
+                    to={item.to}
+                    className="text-3xl group-hover:opacity-75 hover:!opacity-100 transition-opacity"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </nav>
         </header>
 
