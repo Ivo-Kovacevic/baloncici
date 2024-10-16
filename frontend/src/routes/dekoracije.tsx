@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { supabase } from "../../supabase.config";
 
 export const Route = createFileRoute("/dekoracije")({
   component: Dekoracije,
@@ -10,22 +11,25 @@ function Dekoracije() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const files = import.meta.glob("../assets/images/decorations/*");
-    const loadImages = async () => {
-      setLoading(true);
-      // Get functions that load images
-      const imagePromises = Object.values(files).map((importFunction) => importFunction());
-
-      // Wait for all image imports to resolve
-      const resolvedImages = await Promise.all(imagePromises);
-
-      // Extract image paths
-      const imagesPaths = resolvedImages.map((module: any) => module.default);
-
-      setImages(imagesPaths);
-      setLoading(false);
+    const fetchImages = async () => {
+      try {
+        // Get all images from supabase
+        const { data, error } = await supabase.storage.from("decorations").list();
+        if (!data) {
+          console.error("Error fetching images:", error);
+          return;
+        }
+        const imageUrls = data.map((file) => {
+          return `https://iwqkvjhfryekkidifyuh.supabase.co/storage/v1/object/public/decorations/${file.name}`;
+        });
+        setImages(imageUrls);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     };
-    loadImages();
+    fetchImages();
   }, []);
 
   return (
@@ -37,12 +41,12 @@ function Dekoracije() {
             ? Array.from({ length: 9 }).map((_, index) => (
                 <div
                   key={index}
-                  className="w-full aspect-square bg-gray-200 animate-pulse rounded"
+                  className="w-full aspect-square bg-light animate-pulse rounded"
                 ></div>
               ))
             : images.map((image, index) => (
                 <div key={index} className="relative aspect-square">
-                  <div className="w-full aspect-square bg-gray-200 animate-pulse rounded"></div>
+                  <div className="w-full aspect-square bg-light animate-pulse rounded"></div>
                   <img
                     src={image}
                     alt=""

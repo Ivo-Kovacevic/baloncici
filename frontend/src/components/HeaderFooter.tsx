@@ -124,7 +124,7 @@ export default function HeaderFooter({ children }: Main) {
               </a>
               <a
                 className="p-1 hover:underline"
-                href="https://www.instagram.com/baloncici_nikolina?ihsg=MXJjZTQ5cGU3ZzBxdQ=="
+                href="https://www.instagram.com/baloncici_nikolina/"
                 target="_blank"
                 rel="noopener"
               >
