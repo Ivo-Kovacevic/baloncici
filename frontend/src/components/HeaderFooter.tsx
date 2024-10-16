@@ -48,7 +48,7 @@ export default function HeaderFooter({ children }: Main) {
     <>
       <div className="bg-bgImage">
         <header
-          className={`z-30 fixed left-0 top-0 right-0 bg-bgImage shadow-md shadow-gray-400 font-bold transition-all ${!isVisible && "-translate-y-full"}`}
+          className={`z-30 fixed left-0 top-0 right-0 bg-bgImage shadow-md shadow-gray-400 font-bold transition-all ${!isVisible && "-translate-y-full shadow-none"}`}
         >
           {/* Desktop navigation */}
           <nav className="flex items-center container mx-auto">

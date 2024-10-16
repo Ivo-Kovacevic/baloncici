@@ -113,7 +113,7 @@ function Kontakt() {
   return (
     <>
       <main className="container mx-auto flex flex-col md:flex-row justify-around py-16">
-        <section className="flex-1 p-4">
+        <section className="flex-1 px-4 py-8">
           <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col">
             <h1 className="text-2xl">Kontaktirajte nas</h1>
 

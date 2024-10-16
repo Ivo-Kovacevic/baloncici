@@ -9,7 +9,9 @@ function Index() {
     <>
       <main className="flex flex-col items-center container mx-auto text-center">
         <section>
-          <h1 className="text-7xl my-72 p-2 font-allison">Uzleti s nama u svijet balonske mašte</h1>
+          <h1 className="text-7xl mt-72 my-60 p-2 font-allison">
+            Uzleti s nama u svijet balonske mašte
+          </h1>
         </section>
         <section className="max-w-container">
           <h2 className="text-3xl p-2">O nama</h2>
