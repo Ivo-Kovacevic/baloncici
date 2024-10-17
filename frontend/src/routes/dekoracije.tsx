@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "../../supabase.config";
+import CloseImage from "../assets/svg/close-image.svg";
 
 export const Route = createFileRoute("/dekoracije")({
   component: Dekoracije,
@@ -8,6 +9,7 @@ export const Route = createFileRoute("/dekoracije")({
 
 function Dekoracije() {
   const [images, setImages] = useState<string[]>([]);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
   const [offset, setOffset] = useState(0);
@@ -60,6 +62,10 @@ function Dekoracije() {
     fetchImages(offset);
   }, [offset]);
 
+  const closeImage = () => {
+    if (selectedId !== null) setSelectedId(null);
+  };
+
   return (
     <>
       <main className="container mx-auto">
@@ -71,17 +77,36 @@ function Dekoracije() {
               ref={images.length === index + 1 ? lastImageElement : null}
               className="relative aspect-square"
             >
-              <div className="w-full aspect-square bg-light animate-pulse rounded"></div>
-              <img
-                src={image}
-                alt=""
-                loading="lazy"
-                className="absolute inset-0 opacity-0 w-full h-full transition-all duration-300 rounded hover:brightness-50 hover:cursor-pointer object-cover"
-                onLoad={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.opacity = "1";
-                }}
-              />
+              <div
+                className={`${selectedId === index ? "" : "w-full aspect-square bg-light animate-pulse rounded"}`}
+              ></div>
+              <div
+                className={
+                  selectedId === index
+                    ? "fixed inset-0 p-2 bg-dark bg-opacity-70 flex flex-col justify-center items-end z-50"
+                    : ""
+                }
+                onClick={closeImage}
+              >
+                {selectedId === index && (
+                  <img
+                    src={CloseImage}
+                    alt="Close image"
+                    className="w-10 h-10 hover:cursor-pointer"
+                  />
+                )}
+                <img
+                  src={image}
+                  alt=""
+                  loading="lazy"
+                  className={`opacity-0 w-full h-full transition-opacity duration-300 rounded ${selectedId === index ? "static max-w-[1000px] max-h-[90%] h-min object-contain" : "absolute inset-0 object-cover hover:brightness-50 hover:cursor-pointer"}`}
+                  onClick={() => setSelectedId(index)}
+                  onLoad={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.opacity = "1";
+                  }}
+                />
+              </div>
             </div>
           ))}
           {loading &&
