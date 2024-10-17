@@ -171,7 +171,7 @@ function Kontakt() {
           </form>
         </section>
         <div className="mx-2 sm:mx-8 my-14 border-b-2 md:border-l-2 border-dark"></div>
-        <section className="flex-1 p-4 text-center">
+        <section className="flex-1 px-4 py-8 text-center">
           <h1 className="text-2xl">Kontakt info</h1>
           <div className="flex flex-col justify-evenly gap-16 py-16 md:gap-0 h-full">
             <div className="flex justify-center items-center gap-2">
