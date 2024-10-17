@@ -99,7 +99,7 @@ function Dekoracije() {
                   src={image}
                   alt=""
                   loading="lazy"
-                  className={`opacity-0 w-full h-full transition-opacity duration-300 rounded ${selectedId === index ? "static max-w-[1000px] max-h-[80%] w-full h-min object-contain" : "absolute inset-0 object-cover hover:brightness-50 hover:cursor-pointer"}`}
+                  className={`opacity-0 w-full h-full transition-opacity duration-300 rounded ${selectedId === index ? "static max-w-min max-h-[80%] w-full h-min object-contain" : "absolute inset-0 object-cover hover:brightness-50 hover:cursor-pointer"}`}
                   onClick={(e) => {
                     e.stopPropagation();
                     setSelectedId(index);

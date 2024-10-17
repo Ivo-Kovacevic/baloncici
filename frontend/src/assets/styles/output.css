@@ -902,6 +902,11 @@ body {
   max-width: 1000px;
 }
 
+.max-w-min {
+  max-width: -moz-min-content;
+  max-width: min-content;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1409,6 +1414,15 @@ body {
 
   .sm\:hidden {
     display: none;
+  }
+
+  .sm\:w-full {
+    width: 100%;
+  }
+
+  .sm\:w-min {
+    width: -moz-min-content;
+    width: min-content;
   }
 
   .sm\:flex-row {
