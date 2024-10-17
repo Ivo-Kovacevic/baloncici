@@ -799,6 +799,10 @@ body {
   max-height: 90%;
 }
 
+.max-h-\[80\%\] {
+  max-height: 80%;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -822,6 +826,20 @@ body {
 
 .w-16 {
   width: 4rem;
+}
+
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .max-w-container {
@@ -993,6 +1011,14 @@ body {
   gap: 1rem;
 }
 
+.gap-10 {
+  gap: 2.5rem;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -1067,6 +1093,14 @@ body {
 
 .bg-opacity-70 {
   --tw-bg-opacity: 0.7;
+}
+
+.bg-opacity-0 {
+  --tw-bg-opacity: 0;
+}
+
+.bg-opacity-75 {
+  --tw-bg-opacity: 0.75;
 }
 
 .bg-bgImage {

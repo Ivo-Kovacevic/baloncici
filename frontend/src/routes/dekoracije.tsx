@@ -83,7 +83,7 @@ function Dekoracije() {
               <div
                 className={
                   selectedId === index
-                    ? "fixed inset-0 p-2 bg-dark bg-opacity-70 flex flex-col justify-center items-end z-50"
+                    ? "fixed inset-0 p-2 bg-dark bg-opacity-75 flex flex-col justify-center items-center z-50"
                     : ""
                 }
                 onClick={closeImage}
@@ -99,13 +99,22 @@ function Dekoracije() {
                   src={image}
                   alt=""
                   loading="lazy"
-                  className={`opacity-0 w-full h-full transition-opacity duration-300 rounded ${selectedId === index ? "static max-w-[1000px] max-h-[90%] h-min object-contain" : "absolute inset-0 object-cover hover:brightness-50 hover:cursor-pointer"}`}
-                  onClick={() => setSelectedId(index)}
+                  className={`opacity-0 w-full h-full transition-opacity duration-300 rounded ${selectedId === index ? "static max-w-[1000px] max-h-[80%] w-full h-min object-contain" : "absolute inset-0 object-cover hover:brightness-50 hover:cursor-pointer"}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedId(index);
+                  }}
                   onLoad={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.style.opacity = "1";
                   }}
                 />
+                {selectedId === index && (
+                  <div className="flex gap-10">
+                    <span className="text-light text-6xl hover:cursor-pointer">&lt;</span>
+                    <span className="text-light text-6xl hover:cursor-pointer">&gt;</span>
+                  </div>
+                )}
               </div>
             </div>
           ))}
