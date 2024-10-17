@@ -127,7 +127,7 @@ function Dekoracije() {
                           }
                         });
                       }}
-                      className="text-light text-6xl hover:cursor-pointer"
+                      className="text-light text-6xl hover:cursor-pointer px-4"
                     >
                       &lt;
                     </button>
@@ -143,7 +143,7 @@ function Dekoracije() {
                           }
                         });
                       }}
-                      className="text-light text-6xl hover:cursor-pointer"
+                      className="text-light text-6xl hover:cursor-pointer px-4"
                     >
                       &gt;
                     </button>
