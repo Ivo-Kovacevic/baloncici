@@ -77,9 +77,11 @@ function Dekoracije() {
               ref={images.length === index + 1 ? lastImageElement : null}
               className="relative aspect-square"
             >
+              {/* Placeholder skeleton for images that gets covered when image loads */}
               <div
                 className={`${selectedId === index ? "" : "w-full aspect-square bg-light animate-pulse rounded"}`}
               ></div>
+              {/* Make div cover whole screen if image is clicked so image can be positioned in the center */}
               <div
                 className={
                   selectedId === index
@@ -88,6 +90,7 @@ function Dekoracije() {
                 }
                 onClick={closeImage}
               >
+                {/* Add close button for opened image */}
                 {selectedId === index && (
                   <img
                     src={CloseImage}
@@ -110,14 +113,46 @@ function Dekoracije() {
                   }}
                 />
                 {selectedId === index && (
+                  // Buttons for navigation between images
                   <div className="flex gap-10">
-                    <span className="text-light text-6xl hover:cursor-pointer">&lt;</span>
-                    <span className="text-light text-6xl hover:cursor-pointer">&gt;</span>
+                    {/* Go to previous image */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedId((prevId) => {
+                          if (prevId === null) {
+                            return null;
+                          } else {
+                            return prevId - 1;
+                          }
+                        });
+                      }}
+                      className="text-light text-6xl hover:cursor-pointer"
+                    >
+                      &lt;
+                    </button>
+                    {/* Go to next image */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedId((prevId) => {
+                          if (prevId === null) {
+                            return null;
+                          } else {
+                            return prevId + 1;
+                          }
+                        });
+                      }}
+                      className="text-light text-6xl hover:cursor-pointer"
+                    >
+                      &gt;
+                    </button>
                   </div>
                 )}
               </div>
             </div>
           ))}
+          {/* Loading skeleton */}
           {loading &&
             hasMore &&
             Array.from({ length: 12 }).map((_, index) => (
