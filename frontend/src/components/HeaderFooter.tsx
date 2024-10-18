@@ -69,7 +69,10 @@ export default function HeaderFooter({ children }: Main) {
 
             {/* Hamburger menu */}
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(!isOpen);
+              }}
               className="p-2 m-4 sm:hidden focus:outline-none z-50"
             >
               {isOpen ? (
