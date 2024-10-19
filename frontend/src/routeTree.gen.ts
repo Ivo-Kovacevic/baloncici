@@ -10,101 +10,101 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as KontaktImport } from "./routes/kontakt";
-import { Route as DekoracijeImport } from "./routes/dekoracije";
-import { Route as IndexImport } from "./routes/index";
+import { Route as rootRoute } from './routes/__root'
+import { Route as KontaktImport } from './routes/kontakt'
+import { Route as DekoracijeImport } from './routes/dekoracije'
+import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
 const KontaktRoute = KontaktImport.update({
-  path: "/kontakt",
+  path: '/kontakt',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const DekoracijeRoute = DekoracijeImport.update({
-  path: "/dekoracije",
+  path: '/dekoracije',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 const IndexRoute = IndexImport.update({
-  path: "/",
+  path: '/',
   getParentRoute: () => rootRoute,
-} as any);
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof IndexImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/dekoracije": {
-      id: "/dekoracije";
-      path: "/dekoracije";
-      fullPath: "/dekoracije";
-      preLoaderRoute: typeof DekoracijeImport;
-      parentRoute: typeof rootRoute;
-    };
-    "/kontakt": {
-      id: "/kontakt";
-      path: "/kontakt";
-      fullPath: "/kontakt";
-      preLoaderRoute: typeof KontaktImport;
-      parentRoute: typeof rootRoute;
-    };
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/dekoracije': {
+      id: '/dekoracije'
+      path: '/dekoracije'
+      fullPath: '/dekoracije'
+      preLoaderRoute: typeof DekoracijeImport
+      parentRoute: typeof rootRoute
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexRoute;
-  "/dekoracije": typeof DekoracijeRoute;
-  "/kontakt": typeof KontaktRoute;
+  '/': typeof IndexRoute
+  '/dekoracije': typeof DekoracijeRoute
+  '/kontakt': typeof KontaktRoute
 }
 
 export interface FileRoutesByTo {
-  "/": typeof IndexRoute;
-  "/dekoracije": typeof DekoracijeRoute;
-  "/kontakt": typeof KontaktRoute;
+  '/': typeof IndexRoute
+  '/dekoracije': typeof DekoracijeRoute
+  '/kontakt': typeof KontaktRoute
 }
 
 export interface FileRoutesById {
-  __root__: typeof rootRoute;
-  "/": typeof IndexRoute;
-  "/dekoracije": typeof DekoracijeRoute;
-  "/kontakt": typeof KontaktRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/dekoracije': typeof DekoracijeRoute
+  '/kontakt': typeof KontaktRoute
 }
 
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "/" | "/dekoracije" | "/kontakt";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "/" | "/dekoracije" | "/kontakt";
-  id: "__root__" | "/" | "/dekoracije" | "/kontakt";
-  fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/dekoracije' | '/kontakt'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/dekoracije' | '/kontakt'
+  id: '__root__' | '/' | '/dekoracije' | '/kontakt'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  DekoracijeRoute: typeof DekoracijeRoute;
-  KontaktRoute: typeof KontaktRoute;
+  IndexRoute: typeof IndexRoute
+  DekoracijeRoute: typeof DekoracijeRoute
+  KontaktRoute: typeof KontaktRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DekoracijeRoute: DekoracijeRoute,
   KontaktRoute: KontaktRoute,
-};
+}
 
 export const routeTree = rootRoute
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 
 /* prettier-ignore-end */
 
