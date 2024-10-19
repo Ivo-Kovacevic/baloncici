@@ -75,14 +75,14 @@ function Dekoracije() {
     <>
       <main className="container mx-auto">
         <h1 className="pt-48 pb-32 text-center text-4xl">Dekoracije</h1>
-        <section className="px-2 md:px-8 grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <section className="px-2 md:px-8 grid grid-cols-2 lg:grid-cols-3 gap-2">
           {images.map((image, index) => (
             <div
               key={index}
               ref={images.length === index + 1 ? lastImageElement : null}
               className="relative aspect-square"
             >
-              {/* Show image modal and hide that image from grid */}
+              {/* Show selected image modal and hide that image from grid */}
               {selectedId === index ? (
                 <ImageModal
                   selectedId={selectedId}

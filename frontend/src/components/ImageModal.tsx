@@ -21,16 +21,18 @@ export default function ImageModal({
 
   return (
     <>
+      {/* Overlay */}
       <div
         className="fixed inset-0 p-2 bg-dark bg-opacity-75 flex flex-col justify-center items-center z-40"
         onClick={closeImage}
       >
-        {/* Add close button for opened image */}
+        {/* Close button */}
         <img
           src={CloseImage}
           alt="Close image"
-          className="mt-auto w-10 h-10 hover:cursor-pointer"
+          className="mb-auto w-10 h-10 hover:cursor-pointer"
         />
+        {/* Image */}
         <img
           src={image}
           alt=""
@@ -47,7 +49,7 @@ export default function ImageModal({
         />
         {/* Buttons for navigation between images */}
         <div className="mt-auto gap-10">
-          <div className="text-center text-light text-lg">
+          <div className="text-center text-light text-lg" onClick={(e) => e.stopPropagation()}>
             {index + 1}/{imagesLength}
           </div>
           {/* Go to previous image */}
