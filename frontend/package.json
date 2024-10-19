@@ -15,7 +15,8 @@
     "@tanstack/react-router": "^1.64.2",
     "@tanstack/router-devtools": "^1.64.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-zoom-pan-pinch": "^3.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
