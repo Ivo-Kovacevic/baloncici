@@ -1,4 +1,3 @@
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import CloseImage from "../assets/svg/close-image.svg";
 
 type ImageModalProps = {
@@ -34,26 +33,20 @@ export default function ImageModal({
           className="mb-auto w-10 h-10 hover:cursor-pointer"
         />
         {/* Image */}
-        <div onClick={(e) => e.stopPropagation()}>
-          <TransformWrapper>
-            <TransformComponent>
-              <img
-                src={image}
-                alt=""
-                loading="lazy"
-                className="duration-300 rounded static max-w-min max-h-[80%] w-full h-min object-contain"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setSelectedId(index);
-                }}
-                onLoad={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.opacity = "1";
-                }}
-              />
-            </TransformComponent>
-          </TransformWrapper>
-        </div>
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          className="duration-300 rounded static max-w-min max-h-[80%] w-full h-min object-contain"
+          onClick={(e) => {
+            e.stopPropagation();
+            setSelectedId(index);
+          }}
+          onLoad={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.style.opacity = "1";
+          }}
+        />
         {/* Buttons for navigation between images */}
         <div className="mt-auto gap-10">
           <div className="text-center text-light text-lg" onClick={(e) => e.stopPropagation()}>
